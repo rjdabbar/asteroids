@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas></canvas>
+
+    <script>
+      var canvasEl = document.getElementsByTagName("canvas")[0];
+      canvasEl.height = window.innerHeight;
+      canvasEl.width = window.innerWidth;
+      var c = canvasEl.getContext('2d');
+      c.fillStyle = "orange";
+      c.fillRect(100,100,900, 200) 
+    </script>
+  </body>
+</html>
