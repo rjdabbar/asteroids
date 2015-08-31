@@ -5,15 +5,16 @@
     <title></title>
   </head>
   <body>
-    <canvas></canvas>
-
+    <canvas id="game-canvas" width="1000" height="1000"></canvas>
+    <script src="utils.js"></script>
+    <script src="movingObject.js"></script>
+    <script src="asteroid.js"></script>
+    <script src="game.js"></script>
+    <script src="gameView.js"></script>
     <script>
-      var canvasEl = document.getElementsByTagName("canvas")[0];
-      canvasEl.height = window.innerHeight;
-      canvasEl.width = window.innerWidth;
-      var c = canvasEl.getContext('2d');
-      c.fillStyle = "purple";
-      c.fillRect(200,100,900, 200)
+      var canvasEl = document.getElementById("game-canvas");
+      var gameView = new window.Asteroids.GameView(canvasEl);
+      gameView.start();
     </script>
   </body>
 </html>
