@@ -27,7 +27,7 @@
 
   SpaceShip.prototype.thrust = function () {
     var newX, newY, speedX, speedY;
-    var thrust = 0.25;
+    var thrust = 0.7;
 
     speedX = Math.round(Math.cos(this.heading) * thrust * 100)/100;
     speedY = Math.round(Math.sin(this.heading) * thrust * 100)/100;

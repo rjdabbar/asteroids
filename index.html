@@ -8,8 +8,9 @@
   <body>
     <style>
       canvas {
-        background: grey;
-        margin: auto;
+        background: black;
+        border: 2px white solid;
+        margin: 20px auto;
         display: block;
         position: absolute;
         top: 0;
@@ -17,8 +18,12 @@
         left: 0;
         right: 0;
       }
+
+      body {
+        background: grey;
+      }
     </style>
-    <canvas id="game-canvas" width="600" height="600"></canvas>
+    <canvas id="game-canvas" width="1000" height="740"></canvas>
     <script src="keymaster.js"></script>
     <script src="utils.js"></script>
     <script src="movingObject.js"></script>

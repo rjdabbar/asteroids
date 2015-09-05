@@ -33,7 +33,7 @@
 
     if (this.game.isOutOfBounds(this.pos)) {
       if (this.isWrappable) {
-        if (typeof this === "")
+
         this.game.wrap(this.pos);
 
       } else {
