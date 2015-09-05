@@ -10,7 +10,7 @@
     this.bow = [0,0]
     this.leftWing = [0,0];
     this.rightWing = [0,0];
-    this.sideLength = 20;
+    this.sideLength = 10;
     this.updateDrawPoints();
   };
 
@@ -27,7 +27,7 @@
 
   SpaceShip.prototype.thrust = function () {
     var newX, newY, speedX, speedY;
-    var thrust = 10;
+    var thrust = 0.25;
 
     speedX = Math.round(Math.cos(this.heading) * thrust * 100)/100;
     speedY = Math.round(Math.sin(this.heading) * thrust * 100)/100;
@@ -44,8 +44,12 @@
     if (this.heading)
     // debugger;
     this.speed = [speedX, speedY];
-    newX = Math.cos(this.heading) * this.speed[0];
-    newY = Math.sin(this.heading) * this.speed[1];
+    var newXDelta = Math.cos(this.heading) * this.speed[0];
+    var newYDelta = Math.sin(this.heading) * this.speed[1];
+
+    newX = this.vel[0] + newXDelta;
+    newY = this.vel[1] + newYDelta;
+
     this.vel = [newX, newY]
     this.updateDrawPoints();
     console.log(this);
@@ -59,11 +63,11 @@
   SpaceShip.prototype.updateDrawPoints = function () {
     var pi = Math.PI;
     var sternAngle = this.heading + pi;
-    var leftDrawAngle = sternAngle - (pi / 6);
-    var rightDrawAngle = sternAngle + (pi / 6)
+    var leftDrawAngle = sternAngle - (pi / 3);
+    var rightDrawAngle = sternAngle + (pi / 3)
 
-    var bowXOffset = Math.cos(this.heading) * this.sideLength;
-    var bowYOffset = Math.sin(this.heading) * this.sideLength;
+    var bowXOffset = Math.cos(this.heading) * this.sideLength * 2;
+    var bowYOffset = Math.sin(this.heading) * this.sideLength * 2;
     var leftWingXOffset = Math.cos(leftDrawAngle) * this.sideLength;
     var leftWingYOffset = Math.sin(leftDrawAngle) * this.sideLength;
     var rightWingXOffset = Math.cos(rightDrawAngle) * this.sideLength;
