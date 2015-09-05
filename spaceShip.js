@@ -136,17 +136,16 @@
     bulletPos[1] = this.bow[1];
 
     var bulletVel = [0,0];
-    bulletVel[0] = this.vel[0] * 2;
-    bulletVel[1] = this.vel[1] * 2;
-    // if (this.vel[0] !== 0 && this.vel[1] !== 0) {
-      console.log("MAKE A BULLET");
+    bulletVel[0] = Math.cos(this.heading) * 10;
+    bulletVel[1] = Math.sin(this.heading) * 10;
+    if (this.vel[0] !== 0 || this.vel[1] !== 0) {
       var bullet = new window.Asteroids.Bullet
       ({
         "pos":bulletPos,
         "vel": bulletVel,
         "game":this.game
       });
-    // };
+    };
     this.game.add(bullet);
   };
 
