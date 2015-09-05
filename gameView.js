@@ -60,7 +60,7 @@
     });
 
     key("space", function() {
-      game.ship.fireBullet();
+      game.spaceShip.fireBullet();
     });
   };
 

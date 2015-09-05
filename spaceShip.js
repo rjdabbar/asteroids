@@ -42,8 +42,6 @@
     };
 
 
-    if (this.heading)
-    // debugger;
     this.speed = [speedX, speedY];
     var newXDelta = Math.cos(this.heading) * this.speed[0];
     var newYDelta = Math.sin(this.heading) * this.speed[1];
@@ -131,9 +129,26 @@
     // this.update
   }
 
-  SpaceShip.prototype.updateSpeed = function (newSpeed) {
 
-  }
+  SpaceShip.prototype.fireBullet = function () {
+    var bulletPos = [0,0];
+    bulletPos[0] = this.bow[0];
+    bulletPos[1] = this.bow[1];
+
+    var bulletVel = [0,0];
+    bulletVel[0] = this.vel[0] * 2;
+    bulletVel[1] = this.vel[1] * 2;
+    // if (this.vel[0] !== 0 && this.vel[1] !== 0) {
+      console.log("MAKE A BULLET");
+      var bullet = new window.Asteroids.Bullet
+      ({
+        "pos":bulletPos,
+        "vel": bulletVel,
+        "game":this.game
+      });
+    // };
+    this.game.add(bullet);
+  };
 
 
 }())
