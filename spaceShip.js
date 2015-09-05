@@ -27,10 +27,11 @@
 
   SpaceShip.prototype.thrust = function () {
     var newX, newY, speedX, speedY;
-    var thrust = 0.7;
+    var thrust = 0.4;
 
     speedX = Math.round(Math.cos(this.heading) * thrust * 100)/100;
     speedY = Math.round(Math.sin(this.heading) * thrust * 100)/100;
+
 
     if (Math.sin(this.heading) < 0) {
       speedY *= -1;
@@ -50,6 +51,22 @@
     newX = this.vel[0] + newXDelta;
     newY = this.vel[1] + newYDelta;
 
+    if (newX > 12) {
+      newX = 12;
+    }
+
+    if (newX < -12) {
+      newX = -12;
+    }
+
+    if (newY < -12) {
+      newY = -12;
+    }
+
+    if (newY > 12) {
+      newY = 12;
+    }
+    console.log(this.vel);
     this.vel = [newX, newY]
     this.updateDrawPoints();
     console.log(this);
