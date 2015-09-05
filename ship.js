@@ -2,7 +2,7 @@
   window.Asteroids = window.Asteroids || {};
 
   var Ship = window.Asteroids.Ship = function (argsObj) {
-    Ship.COLOR = "orange";
+    // Ship.COLOR = "orange";
     Ship.RADIUS = 12;
     window.Asteroids.MovingObject.call(this, {"pos": argsObj.pos,
                                               "vel": [0,0],

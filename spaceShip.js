@@ -17,7 +17,7 @@
   Asteroids.Util.inherits(SpaceShip, Asteroids.MovingObject);
 
   SpaceShip.prototype.draw = function (ctx) {
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "white";
 
     ctx.moveTo(this.bow[0], this.bow[1]);
     ctx.lineTo(this.leftWing[0], this.leftWing[1]);

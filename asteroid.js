@@ -2,7 +2,7 @@
   window.Asteroids = window.Asteroids || {}
 
   var Asteroid = window.Asteroids.Asteroid = function (argsObj) {
-    Asteroid.COLOR = "green";
+    Asteroid.COLOR = "white";
 
     window.Asteroids.MovingObject.call(this, {"pos": argsObj.pos,
                                               "vel": window.Asteroids.Util.randomVec(5),

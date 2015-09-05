@@ -5,7 +5,7 @@
   var Game = window.Asteroids.Game = function () {
     this.DIM_X = 1000;
     this.DIM_Y = 740;
-    this.NUM_ASTEROIDS = 4;
+    this.NUM_ASTEROIDS = 1;
     this.asteroids = [];
     // this.ship = new window.Asteroids.Ship( { "pos": this.randomPos(),
     //                                          "game": this} );
@@ -34,6 +34,7 @@
   Game.prototype.draw = function (ctx) {
     ctx.clearRect(0,0, this.DIM_X, this.DIM_Y);
     this.getAllObjects().forEach (function(object) {
+
       object.draw(ctx);
     });
   };
