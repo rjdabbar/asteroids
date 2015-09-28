@@ -27,6 +27,11 @@
       } else if (key.isPressed("space")) {
         game.spaceShip.fireBullet();
         game.spaceShip.rotate(-(Math.PI / 24));
+      } else if (key.isPressed("space") && key.isPressed("w")) {
+        console.log("three");
+        game.spaceShip.fireBullet();
+        game.spaceShip.thrust();
+        game.spaceShip.rotate(-(Math.PI / 24));
       } else {
         game.spaceShip.rotate(-(Math.PI / 24));
       };

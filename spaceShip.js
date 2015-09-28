@@ -94,11 +94,9 @@
     var rightWingY = this.pos[1] + rightWingYOffset
     var bowX = this.pos[0] + bowXOffset;
     var bowY = this.pos[1] + bowYOffset;
-
     this.bow = [bowX, bowY];
     this.leftWing = [leftWingX, leftWingY];
     this.rightWing = [rightWingX, rightWingY];
-    // debugger
   };
 
   SpaceShip.prototype.move = function () {
@@ -139,7 +137,7 @@
     bulletVel[0] = Math.cos(this.heading) * 10;
     bulletVel[1] = Math.sin(this.heading) * 10;
     var bullet = new window.Asteroids.Bullet
-    ({
+({
         "pos":bulletPos,
         "vel": bulletVel,
         "game":this.game
