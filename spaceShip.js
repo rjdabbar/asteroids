@@ -27,7 +27,7 @@
 
   SpaceShip.prototype.thrust = function () {
     var newX, newY, speedX, speedY;
-    var thrust = 0.4;
+    var thrust = 0.2;
 
     speedX = Math.round(Math.cos(this.heading) * thrust * 100)/100;
     speedY = Math.round(Math.sin(this.heading) * thrust * 100)/100;
@@ -64,10 +64,8 @@
     if (newY > 12) {
       newY = 12;
     }
-    console.log(this.vel);
     this.vel = [newX, newY]
     this.updateDrawPoints();
-    console.log(this);
   }
 
   SpaceShip.prototype.rotate = function (angle) {
@@ -137,7 +135,7 @@
     bulletVel[0] = Math.cos(this.heading) * 10;
     bulletVel[1] = Math.sin(this.heading) * 10;
     var bullet = new window.Asteroids.Bullet
-({
+    ({
         "pos":bulletPos,
         "vel": bulletVel,
         "game":this.game

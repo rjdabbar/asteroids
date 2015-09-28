@@ -20,7 +20,7 @@
   Game.prototype.addAsteroids = function () {
     for (var i = 0; i < this.NUM_ASTEROIDS; i++) {
       this.asteroids.push(new window.Asteroids.Asteroid( { "pos": this.randomPos(),
-                                                           "radius": 80,
+                                                           "radius": 100,
                                                            "game": this } ));
     };
   };

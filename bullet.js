@@ -22,7 +22,6 @@
         this.game.remove(otherObject);
         this.game.remove(this);
       } else {
-        console.log("HIT")
         var newPos = [0,0];
         newPos[0] = otherObject.pos[0];
         newPos[1] = otherObject.pos[1];
@@ -33,12 +32,14 @@
           {
             "pos": newPos,
             "radius":newRadius,
+            "vel": window.Asteroids.Util.randomVec(this.radius/20),
             "game": this.game
           }));
         this.game.add(new window.Asteroids.Asteroid(
           {
             "pos": newPos,
             "radius":newRadius,
+            "vel": window.Asteroids.Util.randomVec(this.radius/20),
             "game": this.game
           }));
       };
