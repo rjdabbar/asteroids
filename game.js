@@ -27,14 +27,12 @@
 
   Game.prototype.getAllObjects = function () {
     var allObjects = [this.spaceShip].concat(this.asteroids).concat(this.bullets);
-    // console.log(allObjects)
     return allObjects;
   };
 
   Game.prototype.draw = function (ctx) {
     ctx.clearRect(0,0, this.DIM_X, this.DIM_Y);
     this.getAllObjects().forEach (function(object) {
-
       object.draw(ctx);
     });
   };
