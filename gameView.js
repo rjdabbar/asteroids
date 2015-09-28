@@ -3,6 +3,11 @@
 
 
   var GameView = window.Asteroids.GameView = function (canvas) {
+    this.keys = { w: false,
+                  a: false,
+                  space: false,
+                  d: false
+                };
     this.game = new window.Asteroids.Game();
     this.ctx = canvas.getContext("2d");
     console.log(this.game);
@@ -11,61 +16,69 @@
   GameView.prototype.start = function () {
     var game = this.game;
     var ctx = this.ctx;
-    this.bindKeyHandlers();
+    // this.bindKeyHandlers();
+    this.bindKeyEvents();
     setInterval(function () {
       game.step();
+      this.act();
       game.draw(ctx);
-    }, 20);
+    }.bind(this), 20);
   };
 
-  GameView.prototype.bindKeyHandlers = function () {
-    var game = this.game;
-    key("a", function() {
-      if (key.isPressed("w")) {
-        game.spaceShip.rotate(-(Math.PI / 24));
-        game.spaceShip.thrust();
-      } else if (key.isPressed("space")) {
-        game.spaceShip.fireBullet();
-        game.spaceShip.rotate(-(Math.PI / 24));
-      } else if (key.isPressed("space") && key.isPressed("w")) {
-        game.spaceShip.fireBullet();
-        game.spaceShip.thrust();
-        game.spaceShip.rotate(-(Math.PI / 24));
-      } else {
-        game.spaceShip.rotate(-(Math.PI / 24));
-      };
-    });
+  GameView.prototype.bindKeyEvents = function () {
+    var keys = this.keys
+    var el = $(document);
+    el.keydown(function (e) {
+      // W KEY
+      if (e.keyCode === 87) {
+        keys.w = true;
+      }
+      // A KEY
+      if (e.keyCode === 65) {
+        keys.a = true;
+      }
+      // D KEY
+      if (e.keyCode === 68) {
+        keys.d = true;
+      }
+      // SPACE BAR
+      if (e.keyCode === 32 ) {
+        keys.space = true;
+      }
+    })
 
-    key("w", function() {
-      if (key.isPressed("a")) {
-        game.spaceShip.thrust();
-        game.spaceShip.rotate(-(Math.PI / 24));
-      } else if (key.isPressed("d")) {
-        game.spaceShip.thrust();
-        game.spaceShip.rotate((Math.PI / 24));
-      } else if (key.isPressed("space")) {
-        game.spaceShip.fireBullet();
-        game.spaceShip.thrust();
-      } else {
-        game.spaceShip.thrust();
-      };
-    });
-
-    key("d", function() {
-      if (key.isPressed("w")) {
-        game.spaceShip.rotate((Math.PI / 24));
-        game.spaceShip.thrust();
-      } else if (key.isPressed("space")) {
-        game.spaceShip.rotate((Math.PI / 24));
-        game.spaceShip.fireBullet();
-      } else {
-        game.spaceShip.rotate((Math.PI / 24));
-      };
-    });
-
-    key("space", function() {
-      game.spaceShip.fireBullet();
-    });
+    el.keyup(function (e) {
+      if (e.keyCode === 87) {
+        keys.w = false;
+      }
+      // A KEY
+      if (e.keyCode === 65) {
+        keys.a = false;
+      }
+      // D KEY
+      if (e.keyCode === 68) {
+        keys.d = false;
+      }
+      // SPACE BAR
+      if (e.keyCode === 32 ) {
+        keys.space = false;
+      }
+    })
   };
+
+  GameView.prototype.act = function () {
+    if (this.keys.w) {
+      this.game.spaceShip.thrust();
+    };
+    if (this.keys.a) {
+      this.game.spaceShip.rotate(-(Math.PI / 24));
+    };
+    if (this.keys.d) {
+      this.game.spaceShip.rotate((Math.PI / 24));
+    };
+    if (this.keys.space) {
+      this.game.spaceShip.fireBullet();
+    }
+  }
 
 }())
