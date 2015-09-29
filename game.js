@@ -5,7 +5,7 @@
   var Game = window.Asteroids.Game = function () {
     this.DIM_X = 1000;
     this.DIM_Y = 740;
-    this.NUM_ASTEROIDS = 1;
+    this.NUM_ASTEROIDS = 3;
     this.asteroids = [];
     // this.ship = new window.Asteroids.Ship( { "pos": this.randomPos(),
     //                                          "game": this} );

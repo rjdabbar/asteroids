@@ -10,7 +10,6 @@
                 };
     this.game = new window.Asteroids.Game();
     this.ctx = canvas.getContext("2d");
-    console.log(this.game);
   };
 
   GameView.prototype.start = function () {
