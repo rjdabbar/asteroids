@@ -11,6 +11,7 @@
     this.leftWing = [0,0];
     this.rightWing = [0,0];
     this.sideLength = 10;
+    this.radius = 10;
     this.updateDrawPoints();
   };
 
@@ -142,6 +143,16 @@
     });
     this.game.add(bullet);
   };
+
+  SpaceShip.prototype.relocate = function () {
+    var dimX, dimY;
+    dimX = this.game.DIM_X/2;
+    dimY = this.game.DIM_Y/2;
+
+    this.pos = [dimX, dimY];
+  };
+
+
 
 
 }())

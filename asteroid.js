@@ -14,7 +14,8 @@
   window.Asteroids.Util.inherits(Asteroid, window.Asteroids.MovingObject);
 
   Asteroid.prototype.collideWith = function (otherObject) {
-    if (otherObject instanceof window.Asteroids.Ship) {
+    if (otherObject instanceof window.Asteroids.SpaceShip) {
+      console.log("CRASH");
       otherObject.relocate();
     };
   };

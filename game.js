@@ -5,11 +5,11 @@
   var Game = window.Asteroids.Game = function () {
     this.DIM_X = 1000;
     this.DIM_Y = 740;
-    this.NUM_ASTEROIDS = 3;
+    this.NUM_ASTEROIDS = 1;
     this.asteroids = [];
     // this.ship = new window.Asteroids.Ship( { "pos": this.randomPos(),
     //                                          "game": this} );
-    this.spaceShip = new window.Asteroids.SpaceShip( { "pos": this.randomPos(),
+    this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
                                                        "game": this} );
     this.addAsteroids();
     this.bullets = [];
