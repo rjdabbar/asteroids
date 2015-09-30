@@ -5,7 +5,7 @@
     this.pos = argsObj.pos;
     this.vel = [0,0]
     this.game = argsObj.game;
-    this.heading = ((Math.PI)/2);
+    this.heading = (3*(Math.PI)/2);
     this.speed = [0,0];
     this.bow = [0,0]
     this.leftWing = [0,0];
@@ -50,20 +50,20 @@
     newX = this.vel[0] + newXDelta;
     newY = this.vel[1] + newYDelta;
 
-    if (newX > 12) {
-      newX = 12;
+    if (newX > 10) {
+      newX = 10;
     }
 
-    if (newX < -12) {
-      newX = -12;
+    if (newX < -10) {
+      newX = -10;
     }
 
-    if (newY < -12) {
-      newY = -12;
+    if (newY < -10) {
+      newY = -10;
     }
 
-    if (newY > 12) {
-      newY = 12;
+    if (newY > 10) {
+      newY = 10;
     }
     this.vel = [newX, newY]
     this.updateDrawPoints();

@@ -17,6 +17,7 @@
 
   Bullet.prototype.collideWith = function (otherObject) {
     if (otherObject instanceof window.Asteroids.Asteroid) {
+      this.game.scorePoints(otherObject);
       if (otherObject.radius < 20) {
         this.game.remove(otherObject);
         this.game.remove(this);
@@ -25,7 +26,6 @@
         newPos[0] = otherObject.pos[0];
         newPos[1] = otherObject.pos[1];
         var newRadius = otherObject.radius / 2;
-        this.game.scorePoints(otherObject);
         this.game.remove(otherObject);
         this.game.remove(this);
         this.game.add(new window.Asteroids.Asteroid(

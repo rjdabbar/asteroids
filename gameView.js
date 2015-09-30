@@ -70,10 +70,10 @@
       this.game.spaceShip.thrust();
     };
     if (this.keys.a) {
-      this.game.spaceShip.rotate(-(Math.PI / 24));
+      this.game.spaceShip.rotate(-(Math.PI / 36));
     };
     if (this.keys.d) {
-      this.game.spaceShip.rotate((Math.PI / 24));
+      this.game.spaceShip.rotate((Math.PI / 36));
     };
     if (this.keys.space) {
       this.game.spaceShip.fireBullet();

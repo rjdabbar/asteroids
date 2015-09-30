@@ -15,6 +15,7 @@
     this.bullets = [];
     this.allObjects = this.getAllObjects();
     this.score = 0;
+    this.lives = 3;
 
   };
 
