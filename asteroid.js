@@ -15,11 +15,12 @@
 
   Asteroid.prototype.collideWith = function (otherObject) {
     if (otherObject instanceof window.Asteroids.SpaceShip) {
-      if (this.game.lives > 0) {
-        
-        this.game.loseLife()
-      } else {
-        this.game.isOver();
+      if (!otherObject.safe) {
+        if (this.game.lives > 0) {
+          this.game.loseLife()
+        } else {
+          this.game.isOver();
+        }
       }
     };
   };

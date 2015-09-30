@@ -14,6 +14,11 @@
     this.radius = 10;
     this.alive = true;
     this.updateDrawPoints();
+    this.safe = true;
+
+    setTimeout(function () {
+      this.safe = false;
+    }.bind(this), 3000)
   };
 
   Asteroids.Util.inherits(SpaceShip, Asteroids.MovingObject);
