@@ -20,6 +20,7 @@
       game.step();
       this.act();
       game.draw(ctx);
+      this.updateScore();
     }.bind(this), 20);
   };
 
@@ -77,6 +78,10 @@
     if (this.keys.space) {
       this.game.spaceShip.fireBullet();
     }
+  }
+
+  GameView.prototype.updateScore = function () {
+    $("div.score").html(this.game.score)
   }
 
 }())

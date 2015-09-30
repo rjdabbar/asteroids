@@ -17,6 +17,7 @@ canvas {
 body {
   overflow: hidden;
   background: grey;
+  font-family: sans-serif;
 }
 
 
@@ -29,4 +30,17 @@ div.hud {
   display: block;
   background: transparent;
   color: white;
+  z-index: 1;
+}
+
+div.score {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 24px;
+}
+
+div.lives {
+
 }

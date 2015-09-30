@@ -9,7 +9,6 @@
                                               "color": Bullet.COLOR,
                                               "radius": Bullet.RADIUS,
                                               "game": argsObj.game});
-                                              console.log("BULLET");
   };
 
   window.Asteroids.Util.inherits(Bullet, window.Asteroids.MovingObject);
@@ -26,6 +25,7 @@
         newPos[0] = otherObject.pos[0];
         newPos[1] = otherObject.pos[1];
         var newRadius = otherObject.radius / 2;
+        this.game.scorePoints(otherObject);
         this.game.remove(otherObject);
         this.game.remove(this);
         this.game.add(new window.Asteroids.Asteroid(

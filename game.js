@@ -14,6 +14,7 @@
     this.addAsteroids();
     this.bullets = [];
     this.allObjects = this.getAllObjects();
+    this.score = 0;
 
   };
 
@@ -98,6 +99,20 @@
       return true;
     }
     return false;
+  };
+
+  Game.prototype.scorePoints = function (objectDestroyed) {
+    if (objectDestroyed instanceof window.Asteroids.Asteroid) {
+      if (objectDestroyed.radius === 100) {
+        this.score += 100;
+      } else if (objectDestroyed.radius === 50) {
+        this.score += 200;
+      } else if (objectDestroyed.radius === 25) {
+        this.score += 300;
+      } else if (objectDestroyed.radius < 20) {
+        this.score += 400;
+      }
+    }
   };
 
 }())
