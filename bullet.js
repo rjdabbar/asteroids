@@ -24,24 +24,24 @@
         this.game.remove(otherObject);
         this.game.remove(this);
       } else {
-        var newPos = [0,0];
-        newPos[0] = otherObject.pos[0];
-        newPos[1] = otherObject.pos[1];
+        var pos1, pos2;
+        pos1 = [otherObject.pos[0] + 20, otherObject.pos[1] + 20];
+        pos2 = [otherObject.pos[0] - 20, otherObject.pos[1] - 20];
         var newRadius = otherObject.radius / 2;
         var newVec = window.Asteroids.Util.randomVec(newRadius/20);
-        var secVec = [-newVec[0], -newVec[1]]
+        var secVec = window.Asteroids.Util.randomVec(newRadius/20);
         this.game.remove(otherObject);
         this.game.remove(this);
         this.game.add(new window.Asteroids.Asteroid(
           {
-            "pos": newPos,
+            "pos": pos1,
             "radius":newRadius,
             "vel": newVec,
             "game": this.game
           }));
         this.game.add(new window.Asteroids.Asteroid(
           {
-            "pos": newPos,
+            "pos": pos2,
             "radius":newRadius,
             "vel": secVec,
             "game": this.game
