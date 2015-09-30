@@ -15,6 +15,7 @@
     this.alive = true;
     this.updateDrawPoints();
     this.safe = true;
+    this.hasShot = false;
 
     setTimeout(function () {
       this.safe = false;
@@ -133,22 +134,31 @@
     // this.update
   }
 
+  SpaceShip.prototype.coolDown = function () {
+    setTimeout(function () {
+      this.hasShot = false;
+    }.bind(this), 200);
+  };
 
   SpaceShip.prototype.fireBullet = function () {
-    var bulletPos = [0,0];
-    bulletPos[0] = this.bow[0];
-    bulletPos[1] = this.bow[1];
+    if (!this.hasShot) {
+      this.hasShot = true;
+      var bulletPos = [0,0];
+      bulletPos[0] = this.bow[0];
+      bulletPos[1] = this.bow[1];
 
-    var bulletVel = [0,0];
-    bulletVel[0] = Math.cos(this.heading) * 10;
-    bulletVel[1] = Math.sin(this.heading) * 10;
-    var bullet = new window.Asteroids.Bullet
-    ({
-        "pos":bulletPos,
-        "vel": bulletVel,
-        "game":this.game
-    });
-    this.game.add(bullet);
+      var bulletVel = [0,0];
+      bulletVel[0] = Math.cos(this.heading) * 10;
+      bulletVel[1] = Math.sin(this.heading) * 10;
+      var bullet = new window.Asteroids.Bullet
+      ({
+          "pos":bulletPos,
+          "vel": bulletVel,
+          "game":this.game
+      });
+      this.game.add(bullet);
+      this.coolDown();
+    }
   };
 
   SpaceShip.prototype.relocate = function () {
