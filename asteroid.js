@@ -15,8 +15,12 @@
 
   Asteroid.prototype.collideWith = function (otherObject) {
     if (otherObject instanceof window.Asteroids.SpaceShip) {
-      console.log("CRASH");
-      otherObject.relocate();
+      if (this.game.lives > 0) {
+        
+        this.game.loseLife()
+      } else {
+        this.game.isOver();
+      }
     };
   };
 

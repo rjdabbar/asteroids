@@ -16,12 +16,12 @@
     var game = this.game;
     var ctx = this.ctx;
     this.bindKeyEvents();
-    setInterval(function () {
+    game.intervalID = setInterval(function () {
       game.step();
       this.act();
       game.draw(ctx);
-      this.updateScore();
-    }.bind(this), 20);
+      this.updateHUD();
+    }.bind(this), 20, true);
   };
 
   GameView.prototype.bindKeyEvents = function () {
@@ -80,8 +80,17 @@
     }
   }
 
+  GameView.prototype.updateHUD = function () {
+    this.updateScore();
+    this.updateLives();
+  };
+
   GameView.prototype.updateScore = function () {
     $("div.score").html(this.game.score)
+  }
+
+  GameView.prototype.updateLives = function () {
+    $("div.lives-count").html(" " + this.game.lives)
   }
 
 }())

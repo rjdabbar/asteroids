@@ -12,18 +12,21 @@
     this.rightWing = [0,0];
     this.sideLength = 10;
     this.radius = 10;
+    this.alive = true;
     this.updateDrawPoints();
   };
 
   Asteroids.Util.inherits(SpaceShip, Asteroids.MovingObject);
 
   SpaceShip.prototype.draw = function (ctx) {
-    ctx.fillStyle = "white";
+    if (this.alive) {
+      ctx.fillStyle = "white";
 
-    ctx.moveTo(this.bow[0], this.bow[1]);
-    ctx.lineTo(this.leftWing[0], this.leftWing[1]);
-    ctx.lineTo(this.rightWing[0], this.rightWing[1]);
-    ctx.fill();
+      ctx.moveTo(this.bow[0], this.bow[1]);
+      ctx.lineTo(this.leftWing[0], this.leftWing[1]);
+      ctx.lineTo(this.rightWing[0], this.rightWing[1]);
+      ctx.fill();
+    }
   };
 
   SpaceShip.prototype.thrust = function () {
@@ -41,7 +44,6 @@
     if (Math.cos(this.heading) < 0) {
       speedX *= -1;
     };
-
 
     this.speed = [speedX, speedY];
     var newXDelta = Math.cos(this.heading) * this.speed[0];

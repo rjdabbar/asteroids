@@ -16,6 +16,7 @@
     this.allObjects = this.getAllObjects();
     this.score = 0;
     this.lives = 3;
+    this.intervalID;
 
   };
 
@@ -114,6 +115,21 @@
         this.score += 400;
       }
     }
+  };
+
+  Game.prototype.loseLife = function () {
+      clearInterval(this.intervalID);
+      this.spaceShip.alive = false;
+      this.lives--;
+      setTimeout(function () {
+        this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
+                                                           "game": this} );
+        gameView.start()
+      }.bind(this), 3000);
+  };
+
+  Game.prototype.isOver = function () {
+    console.log("GAME OVER");
   };
 
 }())
