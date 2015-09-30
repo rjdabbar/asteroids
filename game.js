@@ -121,6 +121,13 @@
     }
   };
 
+  Game.prototype.nextLevel = function () {
+    if (this.asteroids.length === 0) {
+      this.NUM_ASTEROIDS++;
+      this.addAsteroids();
+    }
+  }
+
   Game.prototype.loseLife = function () {
     clearInterval(this.intervalID);
     this.spaceShip.alive = false;

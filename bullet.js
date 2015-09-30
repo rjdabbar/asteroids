@@ -17,7 +17,6 @@
   Bullet.prototype.isWrappable = false;
 
   Bullet.prototype.collideWith = function (otherObject) {
-    console.log(this.game.asteroids);
     if (otherObject instanceof window.Asteroids.Asteroid) {
       this.game.scorePoints(otherObject);
       if (otherObject.radius < 20) {

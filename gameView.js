@@ -20,6 +20,7 @@
       game.step();
       this.act();
       game.draw(ctx);
+      game.nextLevel();
       this.updateHUD();
     }.bind(this), 20, true);
   };
