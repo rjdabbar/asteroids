@@ -74,6 +74,7 @@
   Game.prototype.remove = function (obj) {
     if (obj instanceof window.Asteroids.SpaceShip) {
       this.allObjects.shift();
+      return;
     }
     if (obj instanceof window.Asteroids.Asteroid) {
       this.asteroids.splice(this.asteroids.indexOf(obj), 1);
@@ -121,17 +122,17 @@
   };
 
   Game.prototype.loseLife = function () {
-      clearInterval(this.intervalID);
-      this.spaceShip.alive = false;
-      this.remove(this.spaceShip)
+    clearInterval(this.intervalID);
+    this.spaceShip.alive = false;
+    this.remove(this.spaceShip)
 
-        this.lives--;
-      setTimeout(function () {
-      this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
-                                                         "game": this} );
-      this.allObjects.unshift(this.spaceShip);
-        gameView.start()
-      }.bind(this), 500);
+      this.lives--;
+    setTimeout(function () {
+    this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
+                                                       "game": this} );
+    this.allObjects.unshift(this.spaceShip);
+      gameView.start()
+    }.bind(this), 2000);
   };
 
   Game.prototype.isOver = function () {
