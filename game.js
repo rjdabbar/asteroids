@@ -72,6 +72,9 @@
   };
 
   Game.prototype.remove = function (obj) {
+    if (obj instanceof window.Asteroids.SpaceShip) {
+      this.allObjects.shift();
+    }
     if (obj instanceof window.Asteroids.Asteroid) {
       this.asteroids.splice(this.asteroids.indexOf(obj), 1);
     } else if (obj instanceof window.Asteroids.Bullet) {
@@ -120,16 +123,19 @@
   Game.prototype.loseLife = function () {
       clearInterval(this.intervalID);
       this.spaceShip.alive = false;
-      this.lives--;
+      this.remove(this.spaceShip)
+
+        this.lives--;
       setTimeout(function () {
-        this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
-                                                           "game": this} );
+      this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
+                                                         "game": this} );
+      this.allObjects.unshift(this.spaceShip);
         gameView.start()
-      }.bind(this), 3000);
+      }.bind(this), 500);
   };
 
   Game.prototype.isOver = function () {
-    console.log("GAME OVER");
+    clearInterval(this.intervalID);
   };
 
 }())
