@@ -3,8 +3,8 @@
 
 
   var Game = window.Asteroids.Game = function () {
-    this.DIM_X = 1000;
-    this.DIM_Y = 740;
+    this.DIM_X = $(window).width();
+    this.DIM_Y = $(window).height();
     this.NUM_ASTEROIDS = 1;
     this.asteroids = [];
     // this.ship = new window.Asteroids.Ship( { "pos": this.randomPos(),
@@ -31,6 +31,8 @@
   };
 
   Game.prototype.draw = function (ctx) {
+    ctx.canvas.width = this.DIM_X;
+    ctx.canvas.height = this.DIM_Y
     ctx.clearRect(0,0, this.DIM_X, this.DIM_Y);
     this.getAllObjects().forEach (function(object) {
       object.draw(ctx);

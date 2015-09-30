@@ -8,10 +8,10 @@
   </head>
   <body>
     <style>
-      
+
     </style>
     <div class="hud"></div>
-    <canvas id="game-canvas" width="1000" height="740"></canvas>
+    <canvas id="game-canvas"></canvas>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="keymaster.js"></script>
     <script src="utils.js"></script>
@@ -22,6 +22,7 @@
     <script src="spaceShip.js"></script>
     <script src="game.js"></script>
     <script src="gameView.js"></script>
+    <script src="hud.js"></script>
     <script>
       var canvasEl = document.getElementById("game-canvas");
       var gameView = new window.Asteroids.GameView(canvasEl);
