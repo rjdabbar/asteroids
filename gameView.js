@@ -31,6 +31,7 @@
     this.running = true;
     var game = this.game;
     var ctx = this.ctx;
+    this.clearInfo();
     game.intervalID = setInterval(function () {
       game.step();
       this.act();
@@ -43,13 +44,23 @@
   GameView.prototype.bindKeyEvents = function () {
     var keys = this.keys
     var el = $(document);
-
     el.keydown(function (e) {
+      // ENTER KEY
       if (e.keyCode === 13) {
-        this.clearInfo();
-        this.start();
+        if (!this.game.started) {
+          e.preventDefault();
+          this.game.started = true;
+          this.start();
+        }
       }
-
+      // TAB KEY
+      if (e.keyCode === 9) {
+        if (!this.game.started && this.game.lives < 1) {
+          e.preventDefault();
+          this.game.restart();
+        }
+      }
+      // P KEY
       if (e.keyCode === 80) {
         this.pause();
       }
@@ -119,7 +130,8 @@
   };
 
   GameView.prototype.clearInfo = function () {
-    $("div.splash").hide();
+    $("div.info").hide();
+    $("div.game-over").hide();
   };
 
 }())

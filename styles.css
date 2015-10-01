@@ -37,6 +37,11 @@ div.info {
   margin: 200px;
 }
 
+div.game-over {
+  display: none;
+  margin: 200px;
+}
+
 div.hud {
   position: absolute;
   top: 0;

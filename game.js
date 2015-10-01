@@ -17,6 +17,7 @@
     this.score = 0;
     this.lives = 3;
     this.intervalID;
+    this.started = false;
 
   };
 
@@ -144,6 +145,14 @@
 
   Game.prototype.isOver = function () {
     clearInterval(this.intervalID);
+    this.started = false;
+    $("div.game-over").show();
+  };
+
+  Game.prototype.restart = function () {
+    var canvasEl = document.getElementById("game-canvas");
+    var gameView = new window.Asteroids.GameView(canvasEl);
+    gameView.start();
   };
 
 }())
