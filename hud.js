@@ -5,7 +5,8 @@ $(document).ready(function(){
 
   // Add splash screen with instructions to front page
   var $splash = $("<div>").addClass("splash");
-  
+  $hud.append($splash)
+
   // Add score box to hud
   var $score = $("<div>").addClass("score");
   $hud.append($score)

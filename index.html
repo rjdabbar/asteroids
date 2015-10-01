@@ -10,6 +10,22 @@
     <style>
 
     </style>
+    <div class="splash">
+      <div class="info">
+        <h1>Asteroids!</h1>
+        <p>
+          W - thrust
+          <br>
+          A/S - rotate
+          <br>
+          Space - shoot
+          <br>
+          P - Pause
+          <br>
+          Press enter to start the game! Good luck!
+        </p>
+      </div>
+    </div>
     <div class="hud"></div>
     <canvas id="game-canvas"></canvas>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -25,7 +41,7 @@
     <script>
       var canvasEl = document.getElementById("game-canvas");
       var gameView = new window.Asteroids.GameView(canvasEl);
-      gameView.start();
+      gameView.preGame();
     </script>
   </body>
 </html>

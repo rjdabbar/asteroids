@@ -20,6 +20,22 @@ body {
   font-family: sans-serif;
 }
 
+div.splash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: transparent;
+  color: white;
+  z-index: 2;
+}
+
+div.info {
+  display: block;
+  margin: 200px;
+}
 
 div.hud {
   position: absolute;

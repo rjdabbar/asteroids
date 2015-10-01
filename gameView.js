@@ -9,13 +9,28 @@
                   d: false
                 };
     this.game = new window.Asteroids.Game();
+    this.running = false;
     this.ctx = canvas.getContext("2d");
+    this.bindKeyEvents();
+  };
+
+  GameView.prototype.preGame = function () {
+    this.game.draw(this.ctx);
+  };
+
+  GameView.prototype.pause = function () {
+    if (this.running) {
+      clearInterval(this.game.intervalID);
+      this.running = false;
+    } else {
+      this.start();
+    }
   };
 
   GameView.prototype.start = function () {
+    this.running = true;
     var game = this.game;
     var ctx = this.ctx;
-    this.bindKeyEvents();
     game.intervalID = setInterval(function () {
       game.step();
       this.act();
@@ -28,7 +43,16 @@
   GameView.prototype.bindKeyEvents = function () {
     var keys = this.keys
     var el = $(document);
+
     el.keydown(function (e) {
+      if (e.keyCode === 13) {
+        this.clearInfo();
+        this.start();
+      }
+
+      if (e.keyCode === 80) {
+        this.pause();
+      }
       // W KEY
       if (e.keyCode === 87) {
         keys.w = true;
@@ -45,7 +69,7 @@
       if (e.keyCode === 32 ) {
         keys.space = true;
       }
-    })
+    }.bind(this))
 
     el.keyup(function (e) {
       if (e.keyCode === 87) {
@@ -88,10 +112,14 @@
 
   GameView.prototype.updateScore = function () {
     $("div.score").html(this.game.score)
-  }
+  };
 
   GameView.prototype.updateLives = function () {
     $("div.lives-count").html(" " + this.game.lives)
-  }
+  };
+
+  GameView.prototype.clearInfo = function () {
+    $("div.splash").hide();
+  };
 
 }())

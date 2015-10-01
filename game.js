@@ -138,7 +138,7 @@
     this.spaceShip = new window.Asteroids.SpaceShip( { "pos": [this.DIM_X/2, this.DIM_Y/2],
                                                        "game": this} );
     this.allObjects.unshift(this.spaceShip);
-      gameView.start()
+    gameView.start()
     }.bind(this), 2000);
   };
 
